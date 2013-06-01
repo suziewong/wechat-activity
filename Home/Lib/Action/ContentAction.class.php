@@ -34,7 +34,7 @@ class ContentAction extends Action{
         		$lastid = $Content->order('lastid desc')->field("lastid")->find();
         		//$lastid
         		$topmsg = $wechat->getTopMsg();
-        		//var_dump($topmsg);
+        		var_dump($topmsg);
         		if($topmsg['id'] > $lastid)
         		{
         			$data = array();
