@@ -1,0 +1,94 @@
+   <include file="Public:header" />
+      <if condition="($Think.session.userpower eq 0)">
+      <div class="content">
+        <div class="page-header">
+          <h3 class="fl">管理用户</h3>
+          <div class="user_message fr"><i class="icon-user"></i>管理用户</div>
+          <div class="cl"></div>
+        </div>
+        <div class="minbox">
+        <form name="form1" method="post" action="__SELF__">
+        	<table class="table table-bordered table-striped">
+            	<thead>
+                	<tr>
+                    	<th width="5%" class="table-textcenter">选择</th>
+                        <th width="5%" class="table-textcenter">ID</th>
+                        <th width="15%" class="table-textcenter">用户名</th>
+                        <th width="15%" class="table-textcenter">类型</th>
+                        <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <volist name="userList" id="user" offset="$offset" length="$length">
+            		<tr>
+                		<td align="center" class="table-textcenter"><input name="duoxuan" type="checkbox" value="{$user.userid}" /></td>
+                        <td class="table-textcenter">{$user.userid}</td>
+                        <td>{$user.username}</td>
+                        <td class="table-textcenter"><if condition="$user.userpower eq '0'">管理员<else/>普通用户</if></td>
+                        <td class="table_config">
+                          <a href="{:U('User/edit?id='.$user["userid"])}">编辑</a>
+                          <a href="{:U('User/del?id='.$user["userid"])}">删除</a>
+                        </td>
+                	</tr>
+                    </volist>
+                    <input type="hidden" name="duoxuanHidden" id="duoxuanHidden" value="" />
+                    <input type="hidden" name="piliangHidden" id="piliangHidden" value="" />
+                </tbody>
+            </table>
+            </form>
+            <!--
+            <div class="batch_edit">
+            <span><input name="" type="checkbox" value="" onclick=CheckAll('selectAll',this)></span>
+            <select class="input-small" name="piliang" onChange="setPL();">
+            	<option value="0">批量设置</option>
+                <option value="1">批量删除</option>
+            </select>
+            </div>
+          -->
+               <div class="pagination-i">
+                {$page}
+            </div>
+        </div>
+        <div class="copyright"></div>
+      <script type="text/javascript">
+          $(".copyright").load("{:U('Index/copyright')}");
+      </script>  
+      </div>
+      <else />你无权访问</if>
+      <!--全选反选JS-->
+      <script>
+      function CheckAll(value,obj)  {
+      var form=document.getElementsByTagName("form")
+       for(var i=0;i<form.length;i++){
+          for (var j=0;j<form[i].elements.length;j++){
+          if(form[i].elements[j].type=="checkbox"){ 
+          var e = form[i].elements[j]; 
+          if (value=="selectAll"){e.checked=obj.checked}     
+          else{e.checked=!e.checked;} 
+             }
+          }
+       }
+      }
+
+      function setPL() {
+        j = 0;
+        for ( i = 0; i < document.getElementsByName("duoxuan").length; i++){
+          if (document.getElementsByName("duoxuan").item(i).checked) {
+            if ( j == 0 ) {
+              document.getElementById("duoxuanHidden").value = document.getElementsByName("duoxuan").item(i).value;
+            } else {
+              document.getElementById("duoxuanHidden").value = document.getElementById("duoxuanHidden").value + "," + document.getElementsByName("duoxuan").item(i).value;
+            }
+            j++;
+          }
+        }
+        document.getElementById("piliangHidden").value = document.getElementsByName("piliang").item(0).value;
+        if ( j==0 || document.getElementById("piliangHidden").value==0 ) {
+          return;
+        }
+        document.form1.submit();
+      }
+
+      </script>
+</body>
+</html>

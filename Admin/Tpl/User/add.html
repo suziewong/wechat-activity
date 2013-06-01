@@ -1,0 +1,61 @@
+   <include file="Public:header" />
+      <if condition="($Think.session.userpower eq 0)">
+      <div class="content">
+        <div class="page-header">
+          <h3 class="fl">添加用户</h3>
+          <div class="user_message fr"><i class="icon-user"></i>增加用户</div>
+          <div class="cl"></div>
+        </div>
+        <form name="form1" id="form1" class="form-inline" action="{:U('User/add')}" method="post">
+        <table class="table set_table">
+          <thead>
+            <tr>
+              <th width="11%" >名 称</th>
+              <th >内 容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>用户类型</td>
+              <td>
+              <select class="input-medium" id="usertype" name="user_type">
+                <option value="0">管理员</option>
+                
+                <option value="1">普通用户</option>
+                
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td>用户名</td>
+              <td><input class="span4" name="username" id="username" type="text"  /></td>
+            </tr>
+             <tr>
+              <td>密码</td>
+              <td><input class="span4" name="password" id="password" type="text"  /></td>
+            </tr>
+            <tr>
+              <td>请再输入一次密码</td>
+              <td><input class="span4" name="password2" id="password2" type="text"  /></td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+        <p class="border_top"> <a class="btn btn-primary btn-small" onClick="formSubmit();">增加新用户</a> </p>
+        <!--end 首页提示信息-->
+        <div class="copyright"></div>
+      
+<script type="text/javascript">
+    $(".copyright").load("{:U('Index/copyright')}");
+</script> 
+  </div>
+ 
+ <script type="text/javascript">
+function formSubmit() {
+	//alert(document.form1.action);
+	document.form1.submit();
+}
+</script>
+    <else />你无权访问</if>
+</body>
+</html>

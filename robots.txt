@@ -1,0 +1,11 @@
+#
+# robots.txt for Hacker News
+#
+
+User-agent: *
+Disallow: /Admin/
+Disallow: /Common/
+Disallow: /Conf/
+Disallow: /Install/
+Disallow: /Home/
+Disallow: /ThinkPHP/

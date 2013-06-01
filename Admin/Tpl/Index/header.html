@@ -1,0 +1,133 @@
+<script type="text/javascript">
+function right_load(url) {
+	alert(url);
+	$("#right").load(url);
+}
+</script>
+
+<h1 class="logo"><a href="{:U('Index/home')}" title=" Admin" target="myframe">后台管理</a></h1>
+<div class="mainnav">
+</div>
+<div class="user_info">
+  <ul class="nav nav-pills pull-right">
+    <li class="dropdown" id="menu1"> <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"> <i class="icon-user"></i>
+    <if condition="($Think.session.userpower eq 0)">管理员<else />普通用户</if> &nbsp;{$Think.session.username} <b class="caret"></b> </a>
+      <ul class="dropdown-menu">
+        <li><a href="__ROOT__/" target="_blank">前台首页</a></li>
+        <li><a href="{:U('Index/home')}" target="myframe">后台首页</a></li>
+        
+        <if condition="($Think.session.userpower eq 0)">
+        <li><a href="#" onClick="clearcache(1);">清除前台缓存</a></li>
+        <li><a href="#" onClick="clearcache(2);">清除后台缓存</a></li>
+        </if>
+        <li><a href="#myModa2" role="button" data-toggle="modal" id="chpasswd">修改密码</a></li>
+        <li class="divider"></li>
+        <li><a href="{:U('User/logout')}">退出</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="modal hide" id="myModa2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">修改用户密码</h3>
+  </div>
+  <div class="modal-body">
+    <div class="change_password">
+      <table width="100%">
+        <tr>
+          <td width="33%" align="right"><span class="cName">输入原密码</span></td>
+          <td width="67%"><input class="span3" name="oldpasswd" id="oldpasswd" type="text" /></td>
+        </tr>
+        <tr>
+          <td align="right"><span class="cName">输入新密码</span></td>
+          <td><input class="span3" name="newpasswd" id="newpasswd" type="text" /></td>
+        </tr>
+        <tr>
+          <td align="right"><span class="cName">确认新密码</span></td>
+          <td><input class="span3" name="newpasswd2" id="newpasswd2" type="text" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" onClick="formSubmit();">修改</button>
+  </div>
+</div>
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>提交提示</h3>
+  </div>
+  <div class="modal-body"> <span id="modal"></span> </div>
+  <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">关闭</a> </div>
+</div>
+ <script type="text/javascript">
+  $("#chpasswd").live("click",function(event){
+    $("#myModa2").show();
+  });
+  function formSubmit(){
+      //document.form1.submit();
+      var processFile = "{:U('User/change_password')}";
+      // 将表单数据送往处理程序
+      var oldpasswd = $("#oldpasswd").val();
+      var newpasswd = $("#newpasswd").val();
+      var newpasswd2 = $("#newpasswd2").val();
+     var msg = "";
+    var formData = "oldpasswd="+oldpasswd+"&newpasswd="+newpasswd;
+    if(newpasswd==newpasswd2)
+    {
+       $.ajax({
+            type: "POST",
+            url: processFile,
+            data: formData,
+            dataType: 'json',
+            success: function(data) {
+               $( '#myModal' ).modal('show');
+               $( '#modal' ).html( '<font style="font-family:Arial;font-size:12px;color:#c3413f">'+data.msg+'</font>');
+            }
+       });
+     }
+     else
+     {
+        msg = "两次输的新密码不一致";
+        $( '#myModal' ).modal('show');
+        $( '#modal' ).html( '<font style="font-family:Arial;font-size:12px;color:#c3413f">'+msg+'</font>');
+     }
+     $("#myModa2").hide();
+}
+  //  清除缓存
+  function clearcache(a) {
+
+      if(a == 1)
+      {
+         msg="前台";
+      }
+      else
+      {
+          msg="后台";
+      }
+      var ch =confirm("你确定要删除"+msg+"缓存");
+      
+      if(ch)
+      {
+        var processFile = "{:U('Setting/clear')}";
+         var formData = "cache="+a;
+        $.ajax({
+               type: "POST",
+              data: formData,
+              url: processFile,
+              dataType: 'json',
+              success: function(data) {
+                 $( '#myModal' ).modal('show');
+                 $( '#modal' ).html( '<font style="font-family:Arial;font-size:12px;color:#c3413f">'+data.msg+'</font>');
+              }
+         });
+      }
+      else
+      {
+
+      }
+      
+  }
+</script>

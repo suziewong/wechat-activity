@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Feel</title>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+      <div class="content">
+        <div class="page-header">
+          <h3 class="fl">编辑节目</h3>
+          <div class="user_message fr"><i class="icon-list"></i>编辑节目</div>
+          <div class="cl"></div>
+        </div>
+        <form name="form1" id="form1" class="form-inline" action="{:U('Content/edit')}" method="post" enctype="multipart/form-data">
+        <table class="table set_table">
+          <thead>
+            <tr>
+              <th width="11%" >名 称</th>
+              <th >内 容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <input type="hidden" type="text" name="contentid" value="{$Content.contentid}"/>
+            <tr>
+              <td>节目名称</td>
+              <td><input class="span4" name="contentname" id="contentname" type="text" value="{$Content.contentname}"/></td>
+            </tr>
+            <tr>
+              <td>栏目类型</td>
+              <td>
+              <select class="input-medium" id="classid" name="classid">
+                <foreach name="ClassList" item="Class">
+                  <option value="{$Class.classid}" <eq name="Class.classid" value="$Content.classid">selected="selected"</eq>>{$Class.classname}
+                </option>
+              </foreach>
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td>节目主播</td>
+              <td><input class="span4" name="member" id="member" type="text" value="{$Content.member}"/></td>
+            </tr>
+            <tr>
+              <td>节目简介<br />[字数小于200字]</td>
+              <td><textarea class="input-xlarge span5" name="intro" id="intro"cols="20" rows="8">{$Content.intro}</textarea></td>
+            </tr>
+            <tr>
+              <td>编号</td>
+              <td><input class="span4" name="number" id="number" type="text" value="{$Content.number}"/></td>
+            </tr>
+            
+             <tr>
+              <td>上传MP3<br /> 留空表示不修改</td>
+              <td>
+              <input name="mp3address" id="mp3address" type="file" value="{$Content.mp3address}"/>
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+        </form>
+        <p class="border_top"> <a class="btn btn-primary btn-small" onClick="formSubmit();">提交编辑</a> </p>
+        <!--end 首页提示信息-->
+        <div class="copyright"></div>
+      <div class="modal hide" id="myModal">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h3>提交提示</h3>
+        </div>
+        <div class="modal-body"> <span id="modal"></span> </div>
+        <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">关闭</a> </div>
+      </div>
+<script type="text/javascript">
+    $(".copyright").load("{:U('Index/copyright')}");
+</script> 
+  </div>
+<script type="text/javascript">
+function formSubmit(){
+	var msg='';
+  if($("#contentname").val()=="")
+  {
+    msg=msg + "节目名为空\n";
+  }
+  if($("#member").val()=="")
+  {
+    msg=msg + "主播为空\n";
+  }
+  if($("#number").val()=="")
+  {
+    msg=msg + "期号为空\n";
+    
+  }
+  var length =$("#intro").val().length;
+  if(length>200)
+  {
+    msg=msg + "节目介绍应该小于200字\n";
+    
+  }
+
+  if(msg.length > 0)
+  {
+    $( '#myModal' ).modal('show');
+    $( '#modal' ).html( '<font style="font-family:Arial;font-size:12px;color:#c3413f">'+msg+'</font>');
+  }
+  else
+  {
+    document.form1.submit();
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+<title>Feel</title>
+</head>
+<body>
+<if condition="($Think.session.userpower eq 0)">
+<form name="form1" id="form1" action="__SELF__" method="post">
+        <input type="hidden" name="item" value="1">
+<div class="content">
+        <div class="page-header">
+          <h3 class="fl">全局设置</h3>  
+          <div class="user_message fr"><i class="icon-wrench"></i>网站设置</div>
+          <div class="cl"></div>
+        </div>
+        <table class="table set_table">
+          <thead>
+            <tr>
+              <th width="11%" >功能</th>
+              <th >设置</th>
+              <th width="61%" class="" >&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>前台模板</td>
+              <td>
+                <select id="theme" class="span3" name="all[theme]">
+                <option value="default" <eq name="all.theme" value="default">selected="selected"</eq> >default</option>
+                <option value="new" <eq name="all.theme" value="new">selected="selected"</eq> >new</option>
+                </select>
+                <td class="">&nbsp;</td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="border_top"> <a class="btn btn-primary btn-small" onclick="formSubmit();">保存设置</a> </p>
+        <div class="copyright"></div>
+</div>
+      <!--end Right Content-->  
+</form>
+
+<script type="text/javascript">
+function formSubmit() {
+  //alert(document.form1.action);
+  document.form1.submit();
+}
+
+</script>
+<script type="text/javascript">
+    $(".copyright").load("{:U('Index/copyright')}");
+</script>
+ <else />你无权访问</if>
+</body>
+</html>

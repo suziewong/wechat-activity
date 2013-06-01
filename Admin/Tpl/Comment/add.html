@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Feel</title>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+      <div class="conment">
+        <div class="page-header">
+          <h3 class="fl">添加评论</h3>
+          <div class="user_message fr"><i class="icon-comment"></i>增加评论</div>
+          <div class="cl"></div>
+        </div>
+        <form name="form1" id="form1" class="form-inline" action="{:U('Comment/add')}" method="post" enctype="multipart/form-data">
+        <table class="table set_table">
+          <thead>
+            <tr>
+              <th width="11%" >名 称</th>
+              <th >内 容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>评论者ID</td>
+              <td><input class="span4" name="uid" id="uid" type="text"/></td>
+            </tr>
+            <tr>
+              <td>主播ID</td>
+              <td><input class="span4" name="djid" id="djid" type="text"/></td>
+            </tr>
+            <tr>
+              <td>节目评论</td>
+              <td><textarea class="input-xlarge span5" name="comment" id="comment" cols="20" rows="8"></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+        <p class="border_top"> <a class="btn btn-primary btn-small" onClick="formSubmit();">增加新评论</a> </p>
+        <!--end 首页提示信息-->
+        <div class="copyright"></div>
+        <script type="text/javascript">
+            $(".copyright").load("{:U('Index/copyright')}");
+        </script> 
+
+      <div class="modal hide" id="myModal">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h3>提交提示</h3>
+        </div>
+        <div class="modal-body"> <span id="modal"></span> </div>
+        <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">关闭</a> </div>
+      </div>
+ <script type="text/javascript">
+function formSubmit(){
+
+    document.form1.submit();
+}
+</script>
+</body>
+</html>

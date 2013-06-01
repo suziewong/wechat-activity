@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Feel电台后台登陆</title>
+<link href="__PUBLIC__/Css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="login">
+		<div id="login_header">
+			<h1 class="login_logo">
+				<a href="http://news.zjut.com"><img src="__PUBLIC__/images/logo1.png" /></a>
+			</h1>
+			<div class="login_headerContent">
+				<div class="navList">
+					<ul>
+						<li><a href="http://duocai.zjut.com">Feel首页</a></li>
+						<li><a href="http://bbs.zjut.com">论坛</a></li>
+						<li><a href="http://www.ozjut.com" target="_blank">帮助</a></li>
+					</ul>
+				</div>
+				<h2 class="login_title">后台登录</h2>
+			</div>
+		</div>
+		<div id="login_content">
+			<div class="loginForm">
+				<form action="{:U('User/checklogin')}" method="post">
+					<p>
+						<label>用户名：</label>
+						<input type="text" name="username" size="20" class="login_input" />
+					</p>
+					<p>
+						<label>密码：</label>
+						<input type="password" name="password" size="20" class="login_input" />
+					</p>
+					<p>
+						<label>验证码：</label>
+						<input class="code" type="text" size="5" name="verify"/>
+						<span><img id="verifyImg" src='__APP__/User/verify/' onclick="fleshVerify()"/></span>
+					</p>
+					<div class="login_bar">
+						<input class="sub" type="submit" value="" id="sub"/>
+						<input type="hidden" name="admin"/>
+					</div>
+				</form>
+			</div>
+			<div class="login_banner"><img src="__PUBLIC__/images/login_banner.jpg" /></div>
+			<div class="login_main">
+				<ul class="helpList">
+					<li><a href="#">用户登录</a></li>
+					<li><a href="#">节目管理</a></li>
+					<li><a href="#">主播管理</a></li>
+					
+				</ul>
+				<div class="login_inner">
+					<p>看我如何高仿Hacker News,Startup News和极客头条</p>
+				</div>
+			</div>
+		</div>
+		<div id="login_footer">
+			<span>Copyright &copy; 2013 <a href="http://www.imsuzie.com" target="_blank">酥西黄</a> Inc. All Rights Reserved.</span>
+		</div>
+	</div>
+</body>
+<script language="JavaScript">
+function fleshVerify(){
+    //重载验证码
+    var time = new Date().getTime();
+    document.getElementById('verifyImg').src= '__APP__/User/verify/'+time;
+}
+</script>
+</html>

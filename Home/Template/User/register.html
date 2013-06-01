@@ -1,0 +1,27 @@
+   <include file="Public:header" />
+        <!--文件列表-->
+        <div class="container">
+              <form class="form-horizontal" action="{:U('User/register')}" method="POST">
+                <div class="control-group">
+                  <label class="control-label" for="inputUser">Username</label>
+                  <div class="controls">
+                    <input type="text" id="inputUser" placeholder="Username" name="username">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="inputPassword">Password</label>
+                  <div class="controls">
+                    <input type="password" id="inputPassword" placeholder="Password" name="password">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <button type="submit" class="btn">Register</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+
+    </body>
+</html>

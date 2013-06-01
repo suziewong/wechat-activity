@@ -1,0 +1,50 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		 $(".sidebar_nav li span").click(
+		function(){
+			if($(this).next("ul").is(":hidden")) 
+				{	
+					$(".sidebar_nav li ul").slideUp(300);
+					$(this).next("ul").slideDown(300);
+				}
+			else
+				{
+					$(this).next("ul").slideUp(300);
+				};
+	});	
+	});
+</script>
+<div class="content">
+  <div class="sidebar_nav">
+    <ul class="unstyled">
+      <if condition="($Think.session.userpower eq 0)">
+      <li><span><a href="#"><i class="icon-wrench"></i>网站设置</a></span> 
+        <ul class="unstyled hide">
+          <li><a href="{:U('Setting/basic')}" target="myframe"><i class="caret_left"></i>基本设置</a></li>
+          <li><a href="{:U('Setting/all')}" target="myframe"><i class="caret_left"></i>全局设置</a></li>
+
+        </ul>
+      </li>
+      <li><span><a href="#"><i class="icon-user"></i>用户管理</a></span> 
+        <ul class="unstyled hide">
+        <li><a href="{:U('User/manage')}" target="myframe"><i class="caret_left"></i>用户管理</a></li>
+        <li><a href="{:U('User/add')}" target="myframe"><i class="caret_left"></i>添加用户</a></li>
+        </ul>
+      </li>
+      <li><span><a href="#"><i class="icon-comment"></i>内容管理</a></span> 
+        <ul class="unstyled hide">
+          <li><a href="{:U('Content/add')}" target="myframe"><i class="caret_left"></i>添加内容</a></li>
+          <li><a href="{:U('Content/manage')}" target="myframe"><i class="caret_left"></i>管理内容</a></li>
+
+        </ul>
+      </li>
+      <li><span><a href="#"><i class="icon-pencil"></i>建议管理</a></span> 
+        <ul class="unstyled hide">
+          <li><a href="{:U('Content/suggest')}" target="myframe"><i class="caret_left"></i>建议</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+

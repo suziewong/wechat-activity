@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+@media screen and (max-device-width:480px){
+.login_logo img { width:90px;}
+.login_input_box { width:200px;}
+
+.modal { width:280px; margin:-140px 0 0 -140px;}
+
+}

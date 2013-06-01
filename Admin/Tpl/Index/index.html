@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理</title>
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery.simpletip-1.3.1.js"></script>
+	<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+	<style>
+	#photo {
+		max-width: 300px;
+		max-height: 300px;
+	}
+	#w1, #h1 {
+		width: 90px;
+		margin: 5px 0px 0px 13px;
+		background: url(__PUBLIC__/images/xiangsu.jpg) no-repeat right;
+	}
+	</style>
+</head>
+<body class="home_body">
+
+<div id="Container">
+  <div id="header" class="header"> </div>
+  <div id="Wrapper">
+    <div id="left" class="Left"> </div>
+    <div id="right" class="Right">
+      <div class="content">
+        <iframe id="myframe" name="myframe" src="{:U('Index/home')}" frameborder="0" scrolling="no" onload="this.height=100" width="100%" ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$("#header").load("{:U('Index/header')}");
+	$("#left").load("{:U('Index/left')}");
+</script>
+</body>
+<script type="text/javascript">
+function reinitIframe(){
+	var iframe = document.getElementById("myframe");
+	try{
+		var bHeight = iframe.contentWindow.document.body.scrollHeight;
+		var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+		var height = Math.max(bHeight, dHeight);
+		iframe.height =  height;
+		}catch (ex){}
+}
+window.setInterval("reinitIframe()",200);
+</script>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>给feel电台提的建议</title>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.simpletip-1.3.1.js"></script>
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+
+
+<!--全选反选JS-->
+<script>
+function CheckAll(value,obj)  {
+var form=document.getElementsByTagName("form")
+ for(var i=0;i<form.length;i++){
+    for (var j=0;j<form[i].elements.length;j++){
+    if(form[i].elements[j].type=="checkbox"){ 
+    var e = form[i].elements[j]; 
+    if (value=="selectAll"){e.checked=obj.checked}     
+    else{e.checked=!e.checked;} 
+       }
+    }
+ }
+}
+
+function setPL() {
+	j = 0;
+	for ( i = 0; i < document.getElementsByName("duoxuan").length; i++){
+		if (document.getElementsByName("duoxuan").item(i).checked) {
+			if ( j == 0 ) {
+				document.getElementById("duoxuanHidden").value = document.getElementsByName("duoxuan").item(i).value;
+			} else {
+				document.getElementById("duoxuanHidden").value = document.getElementById("duoxuanHidden").value + "," + document.getElementsByName("duoxuan").item(i).value;
+			}
+			j++;
+		}
+	}
+	document.getElementById("piliangHidden").value = document.getElementsByName("piliang").item(0).value;
+	if ( j==0 || document.getElementById("piliangHidden").value==0 ) {
+		return;
+	}
+	document.form1.submit();
+}
+
+function setVal(suoshuId,suoshuName) {
+	document.getElementById("xianSuoshu").innerHTML = suoshuName;
+	document.getElementById("suoshuId").value = suoshuId;
+}
+</script>
+
+</head>
+
+<body>
+      <div class="suggest">
+        <div class="page-header">
+          <h3 class="fl">给feel的建议</h3>
+          <div class="user_message fr"><i class="icon-comment"></i>建议</div>
+          <div class="cl"></div>
+        </div>
+        <div class="minbox">
+        <form name="form1" method="post" action="__SELF__">
+        	<table class="table table-bordered table-striped">
+            	<thead>
+                	<tr>
+                    	<th width="5%" class="table-textcenter">选择</th>
+                        <th width="5%" class="table-textcenter">ID</th>
+                        <th width="10%" class="table-textcenter">昵称</th>
+                        <th width="10%" class="table-textcenter">邮箱</th>
+                        <th width="35%" class="table-textcenter">建议</th>
+                        <th width="20%" class="table-textcenter">提交时间</th>
+                        <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <volist name="SuggestList" id="Suggest" offset="$offset" length="$length">
+            		<tr>
+                		<td align="center" class="table-textcenter"><input name="duoxuan" type="checkbox" value="{$Suggest.id}" /></td>
+                        <td class="table-textcenter">{$Suggest.id}</td>
+                        <td>{$Suggest.name}</td>
+                        <td>{$Suggest.email}</td>
+                        <td>{$Suggest.suggest}</td>
+                        <td>{$Suggest.posttime|date='Y-m-d H:i:s',###}</td>
+                        <td class="table_config">
+                          <a href="{:U('Comment/suggestdel?id='.$Suggest["id"])}">删除</a>
+                        </td>
+                	</tr>
+                    </volist>
+                    <input type="hidden" name="duoxuanHidden" id="duoxuanHidden" value="" />
+                    <input type="hidden" name="piliangHidden" id="piliangHidden" value="" />
+                </tbody>
+            </table>
+            </form>
+            <div class="batch_edit">
+            <span><input name="" type="checkbox" value="" onclick=CheckAll('selectAll',this)></span>
+            <select class="input-small" name="piliang" onChange="setPL();">
+            	<option value="0">批量设置</option>
+                <option value="1">批量删除</option>
+            </select>
+            </div>
+               <div class="pagination-i">
+                {$page}
+            </div>
+        </div>
+        <div class="copyright"></div>
+      <script type="text/javascript">
+          $(".copyright").load("{:U('Index/copyright')}");
+      </script>  
+      </div>
+</body>
+</html>

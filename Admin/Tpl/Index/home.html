@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jshack.js"></script>
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Css/style.css" rel="stylesheet" type="text/css" />
+<title>后台管理</title>
+</head>
+<body>
+      
+        <div class="page-header">
+          <h3 class="fl">信息概览</h3>
+         <div class="user_message fr"><i class="icon-user"></i>当前权限组：<if condition="($Think.session.userpower eq 0)">管理员<else />普通用户</if><i class="icon-time"></i>登录时间 <empty name="Think.session.lastlogintime">首次登陆 <else />{$Think.session.lastlogintime|date="Y-m-d",###}</empty></div>
+          <div class="cl"></div>
+        </div>
+        <div class="hero-unit home_prompt">
+          <h1>Hacker News</h1>
+          <p><a class="btn btn-primary btn-large">Just hack it!</a></p>
+        </div>
+        
+        <!--end 首页提示信息-->
+        <div class="copyright"></div>
+
+      <!--end Right Content-->   
+      
+<script type="text/javascript">
+    $(".copyright").load("{:U('Index/copyright')}");
+</script>
+</body>
+</html>

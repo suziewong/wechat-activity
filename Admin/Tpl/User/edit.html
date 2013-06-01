@@ -1,0 +1,56 @@
+   <include file="Public:header" />
+      <if condition="($Think.session.userpower eq 0)">
+      <div class="content">
+        <div class="page-header">
+          <h3 class="fl">编辑用户</h3>
+          <div class="user_message fr"><i class="icon-user"></i>编辑Feel用户</div>
+          <div class="cl"></div>
+        </div>
+        <form name="form1" id="form1" class="form-inline" action="{:U('User/edit')}" method="post">
+        <table class="table set_table">
+          <thead>
+            <tr>
+              <th width="11%" >名 称</th>
+              <th >内 容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <input type="hidden" name="userid" value="{$user.userid}">
+            <tr>
+              <td>用户类型</td>
+              <td>
+              <select class="input-medium" id="user_type" name="user_type">
+                <option value="0" <eq name="user.userpower" value="0">selected="selected"</eq> >管理员</option>
+                <option value="1" <eq name="user.userpower" value="1">selected="selected"</eq> >普通用户</option>
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td>用户名</td>
+              <td><input class="span4" name="username" id="username" type="text"  value="{$user.username}"/></td>
+            </tr>
+             <tr>
+              <td>重置密码</td>
+              <td><input class="span4" name="password" id="password" type="text"  value=""/>&nbsp;&nbsp;&nbsp;(空表示不修改密码) </td>
+            </tr>;
+          </tbody>
+        </table>
+        </form>
+        <p class="border_top"> <a class="btn btn-primary btn-small" onClick="formSubmit();">提交修改</a> </p>
+        <!--end 首页提示信息-->
+        <div class="copyright"></div>
+      
+<script type="text/javascript">
+    $(".copyright").load("{:U('Index/copyright')}");
+</script> 
+  </div>
+ 
+ <script type="text/javascript">
+function formSubmit() {
+	//alert(document.form1.action);
+	document.form1.submit();
+}
+</script>
+ <else />你无权访问</if>
+</body>
+</html>

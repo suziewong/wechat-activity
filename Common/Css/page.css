@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  font-family: 'wenquanyi micro hei', 'microsoft yahei';
+  font-size: 20px;
+  background: #d194d1;
+  color: #808080;
+  background: url("../../images/bg.jpg") center 0px no-repeat #e0e0bd;
+  overflow-y: scroll;
+  min-height: 800px;
+}
+#banner {
+  padding: 10px 150px;
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+#body {
+  margin: 0px auto;
+  width: 1060px;
+}
+#play {
+  width: 70%;
+  float: left;
+}
+#hide {
+  width: 30%;
+  float: left;
+  overflow-x: hidden;
+  height: 500px;
+}
+#wall {
+  width: 120%;
+  height: 100%;
+  overflow: auto;
+  padding: 0px 0px 300px 0px;
+}
+#wall .dj {
+  height: 40px;
+  margin: 10px;
+  font-size: 16px;
+}
+#wall .dj:hover {
+  background: #cfcf96;
+  cursor: pointer;
+}
+#wall .dj img {
+  width: 40px;
+  margin-right: 15px;
+  box-shadow: 0px 0px 20px #808080;
+}
+#wall .dj span {
+  vertical-align: top;
+  line-height: 40px;
+}
+#intro {
+  height: 420px;
+  padding: 10px;
+}
+#intro #border {
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  float: left;
+}
+#intro #border img {
+  border: 8px solid #e6e6e6;
+  box-shadow: 0px 0px 20px #808080;
+}
+#intro #about {
+  float: right;
+  font-size: 15px;
+  width: 260px;
+  vertical-align: top;
+  padding: 20px;
+  line-height: 40px;
+}
+.photos {
+  padding: 0px 10px;
+  margin: 30px 0px;
+}
+.photos img {
+  border: 4px solid #ccc;
+  box-shadow: 0px 0px 10px #b3b3b3;
+  height: 100px;
+}
+#more {
+  padding: 10px 65px;
+  font-size: 15px;
+  margin-top: 20px;
+  width: 500px;
+}
+.curr {
+  background: #cfcf96;
+}
+.nano > .pane {
+  background: #c3c6b9;
+  background: rgba(0,0,0,0.25);
+}
+.nano .slider {
+  background: #705c70;
+  background: rgba(0,0,0,0.5);
+}
