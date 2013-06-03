@@ -1,0 +1,86 @@
+   <include file="Public:header" />
+        <!--文件列表-->
+        <div class="container">
+              <h1>随机抽奖</h1>
+              <div id="box">Codejam</div>
+              <div id="bt" onClick="doit()">开始抽奖啦</div>
+            </div>
+        </div>
+    </body>
+            <script>
+            var processFile ='index.php/Api/content';
+            namelist= new Array();
+  $.ajax({
+    type:'GET',
+    url: processFile,
+    dataType:'json',
+    success: function(data){
+      for(i=0;i<data.length;i++)
+      {
+        namelist[i] = data[i].nickname;
+
+      }
+     // namelist = data;
+    }
+  });
+             /*   var namelist=[
+            "郑洋飞","AAA","BBB"];*/
+          
+          var mytime=null;
+          
+                function doit(){
+                    var bt=window.document.getElementById("bt");
+                    if(mytime==null){
+                        bt.innerHTML="停止抽奖";
+                        show();                    
+                    }else{
+                        bt.innerHTML="开始抽奖";
+                        clearTimeout(mytime);
+                        mytime=null;                    
+                    }
+                }
+                
+                function show(){
+                    var box=window.document.getElementById("box");
+                    var num=Math.floor((Math.random()*100000))%namelist.length;
+                    box.innerHTML=namelist[num];
+                    mytime=setTimeout("show()",1);
+                } 
+          
+        //唐启优修改的代码
+        
+        window.onload=function(){
+          var oImagebg=window.document.getElementById("imagebg");
+          var oBt=window.document.getElementById("bt");
+          var bstop = true;
+          oImagebg.onkeydown=function(ev){
+              var ev = ev || window.event;
+              if(ev.keyCode == 13 && bstop ){
+                 show();
+                 bstop=false;
+                 bt.innerHTML="停止抽奖";
+              }else{
+                clearTimeout(mytime);
+                mytime=null; 
+                bt.innerHTML="开始抽奖";
+                bstop = true; 
+              }
+          };
+        };
+    </script>
+    <style>
+    @charset "utf-8";/* 默认网页编码是UTF-8个格式*/ 
+    img, :link img, :visited img {border:none;}/* 默认图片不带边框*/ 
+    input{vertical-align:middle;font-family:宋体,serif;}/* 默认输入框字居中，字体为宋体*/
+    *{margin:0px;padding:0px;list-style:none;}/* 默认所有对象边距为0，填充为0*/
+    #imagebg{
+      background-image: url(images/images.jpg);
+      background-repeat: no-repeat;
+      background-position: center top;
+      height:643px;
+      overflow:hidden;
+    }
+    #box{ height:100px; line-height:100px; margin:0 auto; margin-top:200px; width:703px; text-align:center; color:#138ee7; font-size:70px;font-family: "Microsoft YaHei","微软雅黑", "宋体";}
+    #bt{ color:#000; cursor:pointer; font-size:26px; width:142px; height:36px; line-height:36px; margin:0 auto; margin-top:65px; text-align:center;font-family: "Microsoft YaHei","微软雅黑", "宋体";}
+    </style>
+</html>

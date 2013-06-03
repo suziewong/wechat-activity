@@ -64,6 +64,11 @@ class Wechatext
 		return $send_snoopy->results;
 	}
 
+	public function token()
+	{
+		return $this->_token;
+	}
+
 	/**
 	 * 获取用户的信息
 	 * @param  string $id 用户的uid(即FakeId)

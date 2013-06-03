@@ -87,7 +87,7 @@ class ContentAction extends CommonAction{
             $data["anonymous"]  = empty($_POST["anonymous"])?0:1;
             $data["link"]   = $_POST["link"];
             $data["time"]   = date("Y-m-d H:i:s");
-
+            
 
             $Content = M('Content');
             if(isset($_POST['id']))

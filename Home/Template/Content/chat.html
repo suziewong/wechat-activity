@@ -5,11 +5,13 @@
                   <tbody id="dir_table" >
                       <volist name="ContentList" id="Content" offset="$offset" length="$length">
                       <tr>
-                          <td width=65px height=64px>{$Content.id}.</td>
-                          <td width=150px height=64px >
-                          	  <a style="font-size:33px;color:red;">{$Content.nickname}  </a></td>
-                          </td>
-                          <td colspan="4"><a href="{$Content.link}" target="_blank"></a><a style="font-size:30px;">我到现场啦</a></td>
+                          <td width=65px height=64px>{$Content.id}</td>
+                          <td width=220px height=64px >
+                            <!--
+                            <img height='48' width='48' src='https://mp.weixin.qq.com/cgi-bin/getheadimg?token=922535099{$Content.fakeid}' >
+                            -->
+                            <a style="font-size:23px;color:green;">{$Content.nickname}  说:</a></td>
+                          <td colspan="4"><a href="{$Content.link}" target="_blank"></a><a style="font-size:20px;">{$Content.content}</a></td>
                           <td style="padding-top:70px;">{$Content.datetime|date="y-m-d H:i:s",###}</td>
                       </tr>
                       </volist>
@@ -21,4 +23,5 @@
             </div>
         </div>
     </body>
+    <meta http-equiv="refresh" content="3" />
 </html>

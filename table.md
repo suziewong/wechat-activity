@@ -23,8 +23,14 @@ CREATE TABLE `wc_content` (
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='内容表';
 
 
-CREATE TABLE `dc_setting` (
-  `item` int(3) unsigned NOT NULL COMMENT 'settingID',
-  `item_key` varchar(50) NOT NULL COMMENT 'setting键',
-  `item_value` varchar(70) NOT NULL COMMENT 'setting值'
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='设置表';
+
+CREATE TABLE `wc_here` (
+  `id` int(3) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `lastid` int NOT NULL COMMENT 'lastid',
+  `nickname`varchar(70) COMMENT '昵称',
+  `fakeid` int NOT NULL COMMENT 'fakeid',
+  `datetime` int NOT NULL COMMENT '时间',
+  `content` varchar(500) COMMENT '内容',
+  `avatar` varchar(200) NOT NULL COMMENT '头像',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='内容表';
