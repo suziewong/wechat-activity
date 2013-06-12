@@ -15,6 +15,8 @@ http://segmentfault.com/e/codejam-hangzhou-2013-p4
 
 http://hackathon.segmentfault.com/q/1010000000208388
 
+关于表结构，我会整理以后再次上传的..
+
 #### 社交网络
 
 http://www.imsuzie.com
