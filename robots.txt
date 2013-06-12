@@ -1,6 +1,5 @@
 #
-# robots.txt for Hacker News
-#
+# robots.txt for WeChat
 
 User-agent: *
 Disallow: /Admin/
