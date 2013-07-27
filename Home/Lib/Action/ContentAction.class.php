@@ -17,8 +17,8 @@ class ContentAction extends Action{
         	};
         	
         	$options = array(
-        		'account'=>'monkeysuzie@gmail.com',
-        		'password'=>'33031992618',
+        		'account'=>'',
+        		'password'=>'',
         		'datapath'=>'./wechat-php-sdk/data/cookie_',
         			'debug'=>true,
         			'logcallback'=>'logdebug'
