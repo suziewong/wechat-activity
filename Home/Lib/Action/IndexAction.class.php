@@ -1,12 +1,14 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
+	/*
+		
+	*/
 class IndexAction extends Action {
 	
     public function index(){
     	//var_dump($config);
     	//C('HOME_DEFAULT_THEME');
     	//$Content = M("Content");
-		$page = isset($_GET['p'])? $_GET['p'] : '1';  //默认显示首页数据
+		/*$page = isset($_GET['p'])? $_GET['p'] : '1';  //默认显示首页数据
 
     	$ContentList = array();
         $Model = new Model();
@@ -30,7 +32,9 @@ class IndexAction extends Action {
 		$this->assign("page",$show);
 
     	//$this->display(C('HOME_DEFAULT_THEME').':index');
+		*/
 		$this->display();
+		
 	}
 	public function about()
 	{

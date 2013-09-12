@@ -1,10 +1,15 @@
 <?php
 class UserAction extends Action {
+    /**
+    *   用户登陆
+    */
 	public function login()
     {
         if(session('userid')){
             redirect(U('Index/index'));
         }else{
+            
+            $this->assign("SiteName","微信");
             $this->display();
         }
         

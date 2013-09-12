@@ -1,20 +1,43 @@
 <?php
+/**
+ * 微信功能类
+ * @category   Action
+ * @package  Content
+ * @subpackage  wechat_function
+ * @author    suziewong <monkeysuzie@gmail.com>
+ */
 class ContentAction extends Action{
-	/*
-		添加内容
+	
+
+    /**
+	*	聊天墙
+    *   @param
+    *   @return 
 	*/
     public function chat()
     {
-        //$this->display();
-        /**
-         * 微信扩展接口测试
-         */
-        	//error_reporting(E_ERROR);
+           
+        import("ORG.Util.Wechatext");// 导入微信类
+
+        //从配置文件里读取微信账户名和密码，用于模拟登陆。
+        $wechat_account = C("Wechat_Account");
+        $wechat_password = C("Wechat_Password");
+        $wechat_datapath = C("Wechat_Datapath");
+
+        $options = array(
+            'account'=> $wechat_account,
+            'password'=> $wechat_password,
+            'datapath'=> $wechat_datapath,
+                'debug'=>true,
+                'logcallback'=>'logdebug'
+        ); 
+        $wechat = new Wechatext($options);
+        //$token= $wechat->token();
+        $this->display();
+        /*    //error_reporting(E_ERROR);
         	include("./wechat-php-sdk/wechatext.class.php");
         	
-        	function logdebug($text){
-        		file_put_contents('./wechat-php-sdk/data/log.txt',$text."\n",FILE_APPEND);		
-        	};
+        	
         	
         	$options = array(
         		'account'=>'',
@@ -28,7 +51,7 @@ class ContentAction extends Action{
         	if ($wechat->checkValid()) {
         		// 获取用户信息
         		/*$data = $wechat->getInfo('1604175440');
-        		var_dump($data);*/
+        		var_dump($data);
         		// 获取最新一条消息
         		$Content = M('Content');
 
@@ -83,6 +106,7 @@ class ContentAction extends Action{
         $this->assign("length",$length);
         $this->assign("page",$show);
         $this->display();
+        */
         
     }
 
@@ -144,8 +168,7 @@ class ContentAction extends Action{
     }
 
     public function cj()
-    {
-        
+    {        
         $this->display();
     }
 }
