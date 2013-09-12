@@ -4,74 +4,19 @@
         <title>微信活动平台</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-        .footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 70px;
-            border-top: 1px solid #e5e5e5;
-            background-color: #f5f5f5;
-        }
-        .input
-        {
-            font: 12px Arial, Helvetica, sans-serif;
-            border: 1px solid #86888B;
-        }
-        #filedrag
-        {
-            display: none;
-            font-weight: bold;
-            text-align: center;
-            padding: 1em 0;
-            margin: 1em 0;
-            color: #555;
-            border: 2px dashed #555;
-            border-radius: 7px;
-            cursor: default;
-        }
-        #filedrag.hover
-        {
-            color: #71C671;
-            border-color: #71C671;
-            border-style: solid;
-            box-shadow: inset 0 3px 4px #888;
-        }
-        #text{
-            margin-left: 180px;
-        }
-        ol{
-            font-size: 20px;
-            margin-top: 20px;
-            
-        }
-        li {
-            line-height: 25px;
-        }
-        table{table-layout: fixed;}
-        td{word-break: break-all; word-wrap:break-word;}
-        footer{display:block;}
-        </style>
+        <link href="__PUBLIC__/Css/header.css" rel="stylesheet" media="screen">
         <script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
     </head>
     <body style="font-family:Microsoft YaHei;">
-
         <iframe style="display:none" id="ifm" name="ifm"></iframe>
-        <!--导航条-->
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" rel="tipsy" href="#">CodeJam</a>
+                    <a class="brand" rel="tipsy" href="{:U('Index/index')}">CodeJam</a>
                    <ul class="nav">
                      <li class="">
-                       <a href="{:U('Index/index')}">关于</a>
+                       <a href="{:U('Index/about')}">关于</a>
                      </li>
                      <li class="">
                        <a href="{:U('Content/chat')}">聊天室</a>
@@ -86,4 +31,3 @@
                 </div>
             </div>
         </div>
-        <!--导航条结束-->
